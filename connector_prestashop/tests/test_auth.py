@@ -1,0 +1,23 @@
+# © 2016 Camptocamp SA
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
+
+
+from odoo import exceptions
+from odoo.tests import tagged
+
+from .common import PrestashopTransactionCase, recorder
+
+
+@tagged("post_install", "-at_install")
+class TestAuth(PrestashopTransactionCase):
+    @recorder.use_cassette
+    def test_01_auth_success(self):
+        self.assertEqual("draft", self.backend_record.state)
+        self.backend_record.button_check_connection()
+        self.assertEqual("checked", self.backend_record.state)
+
+    @recorder.use_cassette
+    def test_02_auth_failure(self):
+        self.backend_record.webservice_key = "xyz"
+        with self.assertRaisesRegex(exceptions.UserError, "Connection failed"):
+            self.backend_record.button_check_connection()
