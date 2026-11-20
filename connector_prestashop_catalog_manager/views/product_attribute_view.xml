@@ -5,12 +5,12 @@
         <field name="name">product.attribute.form</field>
         <field name="model">product.attribute</field>
         <field name="arch" type="xml">
-        <form string="prestashop fields">
-            <group string="Prestashop Bindings" colspan="4">
-                <field name="name" />
-                <field name="prestashop_bind_ids" nolabel="1" />
-            </group>
-        </form>
+            <form string="prestashop fields">
+                <group string="Prestashop Bindings" colspan="4">
+                    <field name="name" />
+                    <field name="prestashop_bind_ids" nolabel="1" />
+                </group>
+            </form>
         </field>
     </record>
 
@@ -37,5 +37,4 @@
             </tree>
         </field>
     </record>
-
 </odoo>

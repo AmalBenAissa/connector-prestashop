@@ -182,7 +182,6 @@ class TestExportProductProduct(CatalogManagerTransactionCase):
             "test_export_product_product",
             cassette_library_dir=self.cassette_library_dir,
         ) as cassette:
-
             # create combination in PS
             binding.export_record()
 

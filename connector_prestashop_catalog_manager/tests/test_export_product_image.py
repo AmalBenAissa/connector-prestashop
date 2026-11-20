@@ -28,7 +28,7 @@ class TestExportProductImage(CatalogManagerTransactionCase):
             **{
                 "default_shop_id": self.shop.id,
                 "link_rewrite": "faded-short-sleaves-t-shirt",
-            }
+            },
         )
         self.transparent_image = (  # 1x1 Transparent GIF
             b"R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -81,7 +81,6 @@ class TestExportProductImage(CatalogManagerTransactionCase):
         with recorder.use_cassette(
             "test_export_product_image", cassette_library_dir=self.cassette_library_dir
         ) as cassette:
-
             # create image in PS
             self.binding.export_record()
 

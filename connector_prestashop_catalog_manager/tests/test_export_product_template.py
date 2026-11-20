@@ -87,7 +87,7 @@ class TestExportProduct(CatalogManagerTransactionCase):
             **{
                 "default_shop_id": self.shop.id,
                 "link_rewrite": "new-product",
-            }
+            },
         ).with_context(connector_no_export=False)
 
     @assert_no_job_delayed
