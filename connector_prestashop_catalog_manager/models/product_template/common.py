@@ -13,7 +13,7 @@ class PrestashopProductTemplate(models.Model):
     meta_title = fields.Char(translate=True)
     meta_description = fields.Char(translate=True)
     meta_keywords = fields.Char(translate=True)
-    tags = fields.Char(translate=True)
+    tags = fields.Char(string="PrestaShop Tags", translate=True)
     online_only = fields.Boolean()
     additional_shipping_cost = fields.Float(
         string="Additional Shipping Price",

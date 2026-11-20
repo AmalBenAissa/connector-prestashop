@@ -1,0 +1,9 @@
+- Sébastien Beau \<<sebastien.beau@akretion.com>\>
+- Benoît Guillot \<<benoit.guillot@akretion.com>\>
+- Mikel Arregi \<<mikelarregi@avanzosc.es>\>
+- [Tecnativa](https://www.tecnativa.com):
+  - Sergio Teruel
+  - Pedro M. Baeza
+- Simone Orsi \<<simone.orsi@camptocamp.com>\>
+- [Versada](https://versada.eu):
+  - Aurelija Norvaisaite

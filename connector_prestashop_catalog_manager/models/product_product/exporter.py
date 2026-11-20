@@ -39,7 +39,7 @@ class ProductCombinationExporter(Component):
                         .id
                     )
                     image_content = getattr(
-                        image_line, "_get_image_from_%s" % image_line.load_from
+                        image_line, f"_get_image_from_{image_line.storage}"
                     )()
                     image_ext.export_record(image_content)
 

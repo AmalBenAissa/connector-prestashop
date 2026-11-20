@@ -78,7 +78,7 @@ class CategImageAdapter(Component):
         api = self.connect()
         image_binary = attributes["image"]
         img_filename = attributes["name"]
-        delete_url = "images/%s" % (self._prestashop_image_model)
+        delete_url = f"images/{self._prestashop_image_model}"
         api.delete(delete_url, str(attributes["categ_id"]))
         image_url = "images/{}/{}".format(
             self._prestashop_image_model,

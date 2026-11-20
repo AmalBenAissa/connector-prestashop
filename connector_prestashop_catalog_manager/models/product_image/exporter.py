@@ -65,10 +65,12 @@ class ProductImageExporter(Component):
                 "type": "image/jpeg",
             }
         )
-        if self.binding.load_from != full_public_url:
-            self.binding.with_context(connector_no_export=True).write(
+        if self.binding.storage != "url" or self.binding.url != full_public_url:
+            # Write on the image itself so storage and url are set together.
+            self.binding.odoo_id.with_context(connector_no_export=True).write(
                 {
-                    "load_from": full_public_url,
+                    "storage": "url",
+                    "url": full_public_url,
                 }
             )
 
@@ -103,9 +105,9 @@ class ProductImageExportMapper(Component):
         return {"legend": record.name}
 
     @mapping
-    def load_from(self, record):
-        return {"load_from": record.load_from}
+    def filename(self, record):
+        return {"filename": f"{record.name}{record.extension or '.jpg'}"}
 
     @mapping
-    def image_1920(self, record):
-        return {"image_1920": record.image_1920}
+    def content(self, record):
+        return {"content": record.image_1920}

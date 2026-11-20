@@ -41,10 +41,10 @@ class TestExportProductImage(CatalogManagerTransactionCase):
             {
                 "owner_id": template.id,
                 "owner_model": "product.template",
-                "image_1920": self.transparent_image,
+                "storage": "filestore",
+                "attachment_image": self.transparent_image,
             }
         )
-        self.image._onchange_load_from()
         self.binding = self.create_binding_no_export(
             "prestashop.product.image", self.image.id, None
         )
@@ -54,13 +54,13 @@ class TestExportProductImage(CatalogManagerTransactionCase):
         # write in image
         self.image.write(
             {
-                "image_1920": self.grey_image,
+                "attachment_image": self.grey_image,
             }
         )
         # check export delayed
         self.instance_delay_record.export_record.assert_called_once_with(
             fields=[
-                "load_from",
+                "attachment_image",
             ]
         )
 
@@ -116,7 +116,7 @@ class TestExportProductImage(CatalogManagerTransactionCase):
 
             # ...and delete test is hacked
 
-            self.image.write({"image_1920": self.grey_image})
+            self.image.write({"attachment_image": self.grey_image})
 
             # delete image in PS
             attributes = {"id_product": 1}
@@ -130,7 +130,7 @@ class TestExportProductImage(CatalogManagerTransactionCase):
             request = cassette.requests[1]
             self.assertEqual("DELETE", request.method)
             self.assertEqual(
-                "/api/images/products/1/%s" % self.binding.prestashop_id,
+                f"/api/images/products/1/{self.binding.prestashop_id}",
                 self.parse_path(request.uri),
             )
             self.assertDictEqual({}, self.parse_qs(request.uri))

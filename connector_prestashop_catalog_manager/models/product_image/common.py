@@ -30,7 +30,7 @@ class PrestashopProductImageListener(Component):
             product = self.env[record.owner_model].browse(record.owner_id)
             if product.exists():
                 template = product.prestashop_bind_ids.filtered(
-                    lambda x: x.backend_id == binding.backend_id
+                    lambda x, binding=binding: x.backend_id == binding.backend_id
                 )
                 if not template:
                     return
