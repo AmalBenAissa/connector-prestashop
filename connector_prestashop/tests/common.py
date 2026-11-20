@@ -8,7 +8,7 @@ from contextlib import contextmanager
 from os.path import dirname, exists, join
 from urllib import parse
 
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import TransactionCase, tagged
 from vcr import VCR
 
 _logger = logging.getLogger(__name__)
@@ -76,6 +76,7 @@ def assert_no_job_delayed(func):
     return functools.wraps(func)(_decorated)
 
 
+@tagged("post_install", "-at_install")
 class PrestashopTransactionCase(TransactionCase):
     """Base class for Tests with Prestashop"""
 
