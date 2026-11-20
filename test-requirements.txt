@@ -1,0 +1,4 @@
+odoo-addon-base_multi_image @ git+https://github.com/HeliconiaIO/server-tools.git@18.0-mig-base_multi_image#subdirectory=base_multi_image
+odoo-addon-connector_ecommerce @ git+https://github.com/camptocamp/connector-ecommerce.git@18.0-mig-connector_ecommerce#subdirectory=connector_ecommerce
+odoo-addon-product_categ_image @ git+https://github.com/AmalBenAissa/product-attribute.git@18.0-mig-product_categ_image#subdirectory=product_categ_image
+odoo-addon-product_multi_image @ git+https://github.com/JulienMartinez/product-attribute.git@18.0-mig-product_multi_image#subdirectory=product_multi_image
