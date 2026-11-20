@@ -408,6 +408,10 @@ class TranslatableRecordImporter(AbstractComponent):
     def find_each_language(self, record):
         languages = {}
         for field in self._translatable_fields[self.model._name]:
+            # Some fields are not returned anymore by PrestaShop 9
+            # (e.g. meta_keywords)
+            if field not in record:
+                continue
             # TODO FIXME in prestapyt
             if not isinstance(record[field]["language"], list):
                 record[field]["language"] = [record[field]["language"]]
@@ -448,6 +452,8 @@ class TranslatableRecordImporter(AbstractComponent):
         if fields:
             _fields = [x for x in _fields if x in fields]
         for field in _fields:
+            if field not in record:
+                continue
             for language in record[field]["language"]:
                 current_id = language["attrs"]["id"]
                 code = languages.get(current_id)
