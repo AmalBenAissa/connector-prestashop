@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo noupdate="1">
 
+    <record id="prestashop_pricelist_demo" model="product.pricelist">
+        <field name="name">Prestashop</field>
+    </record>
+
     <record id="prestashop_backend_demo" model="prestashop.backend">
         <field name="name">Prestashop</field>
+        <field name="pricelist_id" ref="prestashop_pricelist_demo" />
         <field name="version">1.6.1.2</field>
         <field name="location">http://localhost:8080</field>
         <field name="warehouse_id" ref="stock.warehouse0" />
